@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightgrey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #inputText, #outputText {
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        #middleBox {
+            width: 200px;
+            height: 50px;
+            background-color: black;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <input type="text" id="inputText" placeholder="Enter text">
+    <div id="middleBox">
+        <button onclick="changeText('uppercase')">UPPERCASE</button>
+        <button onclick="changeText('lowercase')">lowercase</button>
+        <button onclick="changeText('reverse')">Reverse</button>
+        <button onclick="changeText('clear')">Clear</button>
+    </div>
+    <input type="text" id="outputText" placeholder="Changed text" readonly>
+</div>
+
+<script>
+    function changeText(action) {
+        const inputText = document.getElementById('inputText').value;
+        let outputText = '';
+
+        switch (action) {
+            case 'uppercase':
+                outputText = inputText.toUpperCase();
+                break;
+            case 'lowercase':
+                outputText = inputText.toLowerCase();
+                break;
+            case 'reverse':
+                outputText = inputText.split('').reverse().join('');
+                break;
+            case 'clear':
+                outputText = '';
+                break;
+            default:
+                break;
+        }
+
+        document.getElementById('outputText').value = outputText;
+    }
+</script>
+
+</body>
+</html>
